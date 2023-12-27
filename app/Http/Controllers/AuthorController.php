@@ -18,7 +18,7 @@ class AuthorController extends Controller
     {
         $data = User::select('id', 'name', 'email', 'uuid')->with('profile')->where('uuid', $auhtor_uuid)->firstOrFail();
 
-        return response()->json($data);
+        return response()->json($data->profile->makeHidden('sex'));
     }
 
     public function posts(string $author_uuid)

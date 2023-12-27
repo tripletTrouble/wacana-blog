@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Models\Profile;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Infolists\Components\Fieldset;
@@ -41,7 +42,8 @@ class MyAccount extends Page implements HasForms, HasInfolists
                     ->schema([
                         TextEntry::make('profile.display_name')->label('Display Name'),
                         TextEntry::make('profile.bio')->label('Bio'),
-                        TextEntry::make('profile.sex.display')->label('Jenis Kelamin'),
+                        TextEntry::make('profile.sex')->label('Jenis Kelamin')
+                            ->formatStateUsing(fn (string $state): string => $state == 1 ? 'Laki-laki' : 'Perempuan'),
                         TextEntry::make('profile.job')->label('Pekerjaan'),
                         TextEntry::make('profile.city')->label('Kota'),
                         TextEntry::make('profile.country')->label('Negara'),

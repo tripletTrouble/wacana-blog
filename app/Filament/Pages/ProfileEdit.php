@@ -60,7 +60,7 @@ class ProfileEdit extends Page implements HasForms, HasActions
                         ->options([
                             '1' => 'Laki-laki',
                             '2' => 'Perempuan'
-                        ]),
+                        ])->live(),
                     TextInput::make('job')->label('Pekerjaan'),
                     TextInput::make('city')->label('Kota Tinggal'),
                     TextInput::make('country')->label('Negara Tinggal'),

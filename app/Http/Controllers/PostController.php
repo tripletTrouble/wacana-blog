@@ -11,7 +11,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        $data = Post::with([
+        $data = Post::select([
+                'id', 'title', 'slug', 'excerpt', 'tags', 'user_id', 'category_id',
+                'views', 'loves', 'created_at', 'updated_at'
+            ])
+            ->with([
                 'author' => fn($query) => $query->select('id', 'name', 'email', 'uuid'),
                 'category' => fn($query) => $query->select('id', 'name')
             ])->paginate(10);
@@ -26,6 +30,6 @@ class PostController extends Controller
             'category' => fn($query) => $query->select('id', 'name')
         ])->where('slug', $slug)->firstOrFail();
 
-        return response()->json($data->makeVisible('content'));
+        return response()->json($data);
     }
 }

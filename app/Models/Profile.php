@@ -15,14 +15,18 @@ class Profile extends Model
 
     protected $hidden = ['id', 'created_at', 'updated_at', 'user_id'];
 
+    protected $appends = ['gender'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function sex(): Attribute
+    public function gender(): Attribute
     {
-        return Attribute::make(get: fn(int $value) => [
+        $value = $this->sex;
+
+        return Attribute::make(get: fn() => [
             'code' => $value, 
             'display' => $value === 1 ? 'Laki-laki' : 'Perempuan'
         ]);
