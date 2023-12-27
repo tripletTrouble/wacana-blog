@@ -41,7 +41,7 @@ class MyAccount extends Page implements HasForms, HasInfolists
                     ->schema([
                         TextEntry::make('profile.display_name')->label('Display Name'),
                         TextEntry::make('profile.bio')->label('Bio'),
-                        TextEntry::make('profile.sex')->label('Jenis Kelamin'),
+                        TextEntry::make('profile.sex.display')->label('Jenis Kelamin'),
                         TextEntry::make('profile.job')->label('Pekerjaan'),
                         TextEntry::make('profile.city')->label('Kota'),
                         TextEntry::make('profile.country')->label('Negara'),
