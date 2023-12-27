@@ -34,7 +34,11 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                SpatieMediaLibraryFileUpload::make('thumbnail')->image()->imageEditor()->collection('thumbnails'),
+                SpatieMediaLibraryFileUpload::make('thumbnail')->image()
+                    ->maxSize(1024)
+                    ->imageEditor()->collection('thumbnails')
+                    ->helperText('Maksimal file yang diunggah adalah 1024 Megabytes')
+                    ->live(),
                 TextInput::make('title')->label('Judul Postingan'),
                 Select::make('category_id')->label('Kategori Postingan')
                     ->options(Category::all()->pluck('name', 'id'))->default(1)->disablePlaceholderSelection(),
