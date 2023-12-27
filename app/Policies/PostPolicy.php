@@ -41,7 +41,7 @@ class PostPolicy
             return true;
         }
 
-        if ($user->id === $post->user_id) {
+        if ($user->id == $post->user_id) {
             return true;
         }
 
@@ -57,7 +57,7 @@ class PostPolicy
             return true;
         }
 
-        if ($user->id === $post->user_id) {
+        if ($user->id == $post->user_id) {
             return true;
         }
 
@@ -73,7 +73,7 @@ class PostPolicy
             return true;
         }
 
-        if ($user->id === $post->user_id) {
+        if ($user->id == $post->user_id) {
             return true;
         }
 
@@ -89,7 +89,7 @@ class PostPolicy
             return true;
         }
 
-        if ($user->id === $post->user_id) {
+        if ($user->id == $post->user_id) {
             return true;
         }
 
