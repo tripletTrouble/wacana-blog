@@ -42,11 +42,13 @@ class ProfileEdit extends Page implements HasForms, HasActions
         return $form->schema([
             SpatieMediaLibraryFileUpload::make('avatar')
                 ->avatar()
+                ->maxSize(1024)
                 ->circleCropper()
                 ->imageEditor()
                 ->collection('avatars')
                 ->moveFiles()
                 ->columnSpan(2)
+                ->helperText('Maksimal file yang diunggah adalah 1 MB')
                 ->default(fn (User $user) => $user->getMedia('avatars')->first()->getUrl()),
             TextInput::make('name')->label('Nama Lengkap'),
             TextInput::make('email')->label('Email'),

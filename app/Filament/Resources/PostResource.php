@@ -37,7 +37,7 @@ class PostResource extends Resource
                 SpatieMediaLibraryFileUpload::make('thumbnail')->image()
                     ->maxSize(1024)
                     ->imageEditor()->collection('thumbnails')
-                    ->helperText('Maksimal file yang diunggah adalah 1024 Megabytes')
+                    ->helperText('Maksimal file yang diunggah adalah 1 MB')
                     ->live(),
                 TextInput::make('title')->label('Judul Postingan'),
                 Select::make('category_id')->label('Kategori Postingan')
