@@ -34,7 +34,7 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                SpatieMediaLibraryFileUpload::make('thumbnail')->imageEditor()->collection('thumbnails'),
+                SpatieMediaLibraryFileUpload::make('thumbnail')->image()->imageEditor()->collection('thumbnails'),
                 TextInput::make('title')->label('Judul Postingan'),
                 Select::make('category_id')->label('Kategori Postingan')
                     ->options(Category::all()->pluck('name', 'id'))->default(1)->disablePlaceholderSelection(),
