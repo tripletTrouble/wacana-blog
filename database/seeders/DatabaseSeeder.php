@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $exists = \Spatie\Permission\Models\Role::findByName('Administrator');
-
-        if (! $exists) {
+        try {
+            \Spatie\Permission\Models\Role::findByName('Administrator');
+        } catch (\Throwable $th) {
             \Spatie\Permission\Models\Role::create(['name' => 'Administrator']);
         }
 
