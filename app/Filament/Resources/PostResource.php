@@ -68,7 +68,7 @@ class PostResource extends Resource
                 ]),
             ])
             ->checkIfRecordIsSelectableUsing(
-                fn (Post $post): bool => auth()->user()->hasRole('Administrator') || $post->user_id === auth()->user()->id,
+                fn (Post $post): bool => auth()->user()->hasRole('Administrator') || $post->user_id == auth()->user()->id,
             );
     }
 
