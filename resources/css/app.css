@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .nav-item {
+        @apply font-bold text-gray-800 dark:text-white text-lg text-center
+    }
+}

@@ -47,7 +47,7 @@ class ProfileEdit extends Page implements HasForms, HasActions
                 ->imageEditor()
                 ->collection('avatars')
                 ->moveFiles()
-                ->columnSpan(2)
+                ->columnSpanFull()
                 ->helperText('Maksimal file yang diunggah adalah 1 MB')
                 ->default(fn (User $user) => $user->getMedia('avatars')->first()->getUrl()),
             TextInput::make('name')->label('Nama Lengkap'),
@@ -67,9 +67,7 @@ class ProfileEdit extends Page implements HasForms, HasActions
                     Textarea::make('bio')->label('Bio')->rows(4),
                 ])
         ])
-            ->columns([
-                'md' => 2
-            ])
+            ->columns(2)
             ->statePath('data')
             ->model($this->user);
     }

@@ -1,38 +1,26 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Admin\Resources;
 
-use Filament\Forms;
-use Filament\Panel;
-use Filament\Tables;
+use App\Filament\Admin\Resources\CategoryResource\Pages;
+use App\Filament\Admin\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Facades\Filament;
-use Filament\Resources\Resource;
-use Filament\Tables\Columns\TextColumn;
+use Filament\Forms;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\CategoryResource\Pages;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-bookmark';
-
-    protected static ?string $modelLabel = 'Kategori';
-
-    public static function shouldRegisterNavigation(): bool
-    {
-        if (Filament::getCurrentPanel()->getId() == 'admin') {
-            return true;
-        }
-
-        return false;
-    }
 
     public static function form(Form $form): Form
     {
@@ -49,7 +37,7 @@ class CategoryResource extends Resource
                 TextColumn::make('name')->label('Nama Kategori')
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()->hidden(fn(Model $record): bool => $record->id == 1),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -57,7 +45,10 @@ class CategoryResource extends Resource
                 ]),
             ])
             ->checkIfRecordIsSelectableUsing(
-                fn(Category $category): bool => $category->id != 1,
+                fn (Model $record): bool => $record->id != 1,
+            )
+            ->recordUrl(
+                fn (Model $record): ?string => $record->id == 1 ? null : url("admin/categories/{$record->id}/edit"),
             );
     }
 
