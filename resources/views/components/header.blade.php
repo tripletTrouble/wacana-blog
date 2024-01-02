@@ -8,7 +8,7 @@
                 <a href="#" class="nav-item font-semibold text-sm hidden md:block">Hukum</a>
                 <a href="#" class="nav-item font-semibold text-sm hidden lg:block">Politik</a>
                 <a href="#" class="nav-item font-semibold text-sm hidden lg:block">Jurnalisme</a>
-                <a href="#" class="nav-item font-semibold text-sm">Lainnya</a>
+                <a href="{{ route('categories.index') }}" class="nav-item font-semibold text-sm">Lainnya</a>
             </nav>
         </div>
         <div>

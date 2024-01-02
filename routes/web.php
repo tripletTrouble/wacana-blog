@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomeController::class);
 
 include __DIR__ . '/postWeb.php';
+include __DIR__ . '/categoryWeb.php';
+include __DIR__ . '/authorWeb.php';

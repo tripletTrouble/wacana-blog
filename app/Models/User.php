@@ -76,7 +76,7 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser, Has
 
         $initial = str()->substr($this->name, 0, 1);
 
-        return "https://ui-avatars.com/api/?name={$initial}&color=FFFFFF&background=09090b";
+        return "https://ui-avatars.com/api/?name={$initial}&color=FFFFFF&background=38BDF8";
     }
 
     public function profile(): HasOne

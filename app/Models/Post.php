@@ -14,7 +14,7 @@ class Post extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
 
     protected $guarded = ['id', 'created_at', 'updated_at', 'loves', 'views'];
-    protected $hidden = ['id', 'category_id', 'user_id', 'media'];
+    protected $hidden = ['id', 'user_id', 'media'];
     protected $appends = ['thumbnail_url'];
 
     public function author(): BelongsTo
@@ -32,5 +32,13 @@ class Post extends Model implements HasMedia
         $thumbnails = $this->getMedia('thumbnails');
 
         return Attribute::make(get: fn() => $thumbnails[0]->getFUllUrl());
+    }
+
+    public function minsRead(): Attribute
+    {
+        return Attribute::make(get: function () {
+            $words = str_word_count(strip_tags($this->content));
+            return ceil($words/200);
+        });
     }
 }

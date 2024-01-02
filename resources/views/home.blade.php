@@ -1,4 +1,4 @@
-<x-base-layout :title="'Merdeka'">
+<x-base-layout>
     <div id="featured">
         <h2 class="sr-only">Featured Post</h2>
         @foreach ($featured_posts as $post)
@@ -23,7 +23,7 @@
     </div>
 
     <div id="latest" class="w-full lg:w-[90%] xl:w-[80%] mx-auto mt-6 md:mt-8 lg:mt-10 mb-10">
-        <div class="text-gray-800 dark:text-white border-b border-sky-400 mb-3">
+        <div class="text-white border-b border-sky-400 mb-3">
             <div class="flex items-center gap-2 py-1 px-3 bg-sky-400 w-fit rounded-tr-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-4 w-4" viewBox="0 0 16 16">
                     <path
@@ -34,26 +34,7 @@
         </div>
         <div id="latest-item" class="grid grid-cols-1 gap-10 text-gray-800 dark:text-white">
             @foreach ($latest_posts as $post)
-                <div class="flex flex-col md:flex-row md:gap-8">
-                    <a href="{{ route('posts.show', $post->slug) }}" class="md:w-[50%]">
-                        <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}">
-                    </a>
-                    <div class="mt-3 md:mt-0 w-full md:w-[50%]">
-                        <a href="#">
-                            <p class="text-gray-700 dark:text-slate-50 text-xs">
-                                {{ str()->upper($post->category->name) }}</p>
-                        </a>
-                        <a href="{{ route('posts.show', $post->slug) }}">
-                            <h3 class="font-semibold text-xl xl:text-2xl mt-1 line-clamp-2 xl:line-clamp-3">{{ $post->title }}</h3>
-                        </a>
-                        <p class="text-[11px] lg:text-xs mt-0.5">Oleh: <a href="#"
-                                class="font-semibold">{{ $post->author->name }}</a> &bull;
-                            {{ $post->created_at->diffForHumans() }}</p>
-                        <a href="{{ route('posts.show', $post->slug) }}">
-                            <p class="text-sm mt-3 xl:text-base line-clamp-3">{{ $post->excerpt }}</p>
-                        </a>
-                    </div>
-                </div>
+                <x-post-card :post="$post"></x-post-card>
             @endforeach
         </div>
         <div id="latest-pagination">

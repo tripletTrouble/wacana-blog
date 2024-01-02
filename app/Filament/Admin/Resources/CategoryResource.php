@@ -6,6 +6,7 @@ use App\Filament\Admin\Resources\CategoryResource\Pages;
 use App\Filament\Admin\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -26,8 +27,9 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('Nama Kategori')
-            ]);
+                TextInput::make('name')->label('Nama Kategori'),
+                Textarea::make('description')->label('Deskripsi Kategori')
+            ])->columns(1);
     }
 
     public static function table(Table $table): Table

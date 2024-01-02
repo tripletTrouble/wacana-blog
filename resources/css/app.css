@@ -6,4 +6,12 @@
     .nav-item {
         @apply font-bold text-gray-800 dark:text-white text-lg text-center
     }
+
+    #post-content > p {
+        @apply mb-8 md:mb-10 lg:mb-12
+    }
+
+    #post-content figcaption {
+        @apply text-xs md:text-sm text-gray-500 dark:text-slate-100 text-center mt-3
+    }
 }
