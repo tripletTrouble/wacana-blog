@@ -21,7 +21,7 @@
                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                         </svg>
                     </button>
-                    <div class="fixed right-0 w-screen h-screen bg-white/80 dark:bg-gray-800/90 top-16 flex flex-col items-center gap-6 pt-32"
+                    <div class="fixed right-0 w-screen h-screen bg-white/90 dark:bg-gray-800/90 top-16 flex flex-col items-center gap-6 pt-32"
                         x-cloak x-show="open">
                         <button class="absolute top-10 right-10 p-2" @click="open=false">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="h-8 w-8 dark:text-white"
@@ -32,23 +32,25 @@
                         </button>
                         <p class="text-lg dark:text-white">Cari sesuatu ...</p>
                         <div class="relative w-[50%]">
-                            <label for="search-lg" class="sr-only"> Search for... </label>
+                            <form action="{{ route('posts.search') }}" method="get">
+                                <label for="search-lg" class="sr-only"> Search for... </label>
 
-                            <input type="text" id="search-lg" name="q" placeholder="Kata kunci ..."
-                                class="w-full rounded-md border-gray-200 py-2.5 pl-6 pe-10 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white text-lg" />
+                                <input type="text" id="search-lg" name="q" placeholder="Kata kunci ..." value="{{ request()->q }}"
+                                    class="w-full rounded-md border-gray-200 py-2.5 pl-6 pe-10 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white text-lg" />
 
-                            <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
-                                <button type="button"
-                                    class="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                                    <span class="sr-only">Search</span>
+                                <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                                    <button type="button"
+                                        class="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                                        <span class="sr-only">Search</span>
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                    </svg>
-                                </button>
-                            </span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -97,21 +99,23 @@
                     x-cloak x-show="open">
                     <div id="search-bar">
                         <div class="relative">
-                            <label for="search-sm" class="sr-only"> Search for... </label>
-                            <input type="text" id="search-sm" name="q" placeholder="Cari sesuatu..."
-                                class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:text-sm" />
-                            <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
-                                <button type="button"
-                                    class="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
-                                    <span class="sr-only">Search</span>
+                            <form action="{{ route('posts.search') }}" method="get">
+                                <label for="search-sm" class="sr-only"> Search for... </label>
+                                <input type="text" id="search-sm" name="q" placeholder="Kata kunci..."  value="{{ request()->q }}"
+                                    class="w-full rounded-md border-gray-200 py-2.5 pe-10 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-white sm:text-sm" />
+                                <span class="absolute inset-y-0 end-0 grid w-10 place-content-center">
+                                    <button type="button"
+                                        class="text-gray-600 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300">
+                                        <span class="sr-only">Search</span>
 
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-                                    </svg>
-                                </button>
-                            </span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                                        </svg>
+                                    </button>
+                                </span>
+                            </form>
                         </div>
                     </div>
                     <div class="nav-item">
@@ -149,8 +153,8 @@
                                         d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
                                 </svg>
 
-                                <svg data-checked-mobile-icon xmlns="http://www.w3.org/2000/svg" class="hidden h-4 w-4"
-                                    viewBox="0 0 16 16" fill="currentColor">
+                                <svg data-checked-mobile-icon xmlns="http://www.w3.org/2000/svg"
+                                    class="hidden h-4 w-4" viewBox="0 0 16 16" fill="currentColor">
                                     <path
                                         d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278" />
                                     <path
