@@ -15,6 +15,7 @@
             {{ "#{$item}" }}
         @endforeach
     </p>
+    <div class="mb-10 lg:mb-12 px-5 italic py-2 border-l-4 text-gray-800 dark:text-white border-gray-600 dark:border-white">"{{ $post->excerpt }}"</div>
     <div class="text-gray-800 dark:text-white" id="post-content">
         {!! $post->content !!}
     </div>

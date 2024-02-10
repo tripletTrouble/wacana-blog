@@ -42,7 +42,7 @@ class PostResource extends Resource
                 TextInput::make('title')->label('Judul Postingan'),
                 Select::make('category_id')->label('Kategori Postingan')
                     ->options(Category::all()->pluck('name', 'id'))->default(1)->disablePlaceholderSelection(),
-                Textarea::make('excerpt')->label('Ringkasan'),
+                Textarea::make('excerpt')->label('Ringkasan')->rows(5),
                 RichEditor::make('content')->label('Isi Postingan'),
                 TagsInput::make('tags')->separator(',')->splitKeys(['Tab', ' ', 'Enter'])
             ])->columns(1);
