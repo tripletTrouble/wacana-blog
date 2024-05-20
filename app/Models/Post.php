@@ -31,7 +31,7 @@ class Post extends Model implements HasMedia
     {
         $thumbnails = $this->getMedia('thumbnails');
 
-        return Attribute::make(get: fn() => $thumbnails[0]->getFUllUrl());
+        return Attribute::make(get: fn() => isset($thumbnails[0]) ? $thumbnails[0]->getFUllUrl() : '');
     }
 
     public function minsRead(): Attribute
