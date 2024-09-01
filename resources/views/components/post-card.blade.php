@@ -1,10 +1,7 @@
-<div class="flex flex-col md:flex-row md:gap-8 text-gray-800 dark:text-white">
-    <a href="{{ route('posts.show', $post->slug) }}" class="md:w-[50%]">
-        <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}">
-    </a>
-    <div class="mt-3 md:mt-0 w-full md:w-[50%]">
+<div class="flex flex-col md:gap-12 md:flex-row text-gray-800 dark:text-white">
+    <div class="mt-3 md:mt-0 w-auto">
         <a href="{{ route('categories.posts', $post->category->name) }}">
-            <p class="text-gray-700 dark:text-slate-50 text-xs">
+            <p class="bg-sky-400/10 text-xs w-fit p-2 text-sky-500 rounded-md font-semibold">
                 {{ str()->upper($post->category->name) }}</p>
         </a>
         <a href="{{ route('posts.show', $post->slug) }}">
@@ -17,4 +14,7 @@
             <p class="text-sm mt-3 xl:text-base line-clamp-3">{{ $post->excerpt }}</p>
         </a>
     </div>
+    <a href="{{ route('posts.show', $post->slug) }}">
+        <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}" class="rounded-xl">
+    </a>
 </div>

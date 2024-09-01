@@ -4,7 +4,11 @@
 
 @layer components {
     .nav-item {
-        @apply font-bold text-gray-800 dark:text-white text-lg text-center
+        @apply font-bold text-gray-800 dark:text-white text-lg text-center px-3 py-2 rounded-md
+    }
+
+    .nav-item.active {
+        @apply bg-gray-800 text-white
     }
 
     #post-content > p {
