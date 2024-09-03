@@ -2,17 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    font-family: "Public Sans", system-ui, sans-serif;
+}
+
 @layer components {
     .nav-item {
         @apply font-bold text-gray-800 dark:text-white text-lg text-center px-3 py-2 rounded-md
     }
 
     .nav-item.active {
-        @apply bg-gray-800 text-white
+        @apply bg-gray-800 text-white dark:bg-white dark:text-gray-800
     }
 
     #post-content > p {
-        @apply mb-3 md:mb-5 lg:mb-8
+        @apply mb-3 md:mb-5 lg:mb-8 leading-loose
     }
 
     #post-content > h2 {

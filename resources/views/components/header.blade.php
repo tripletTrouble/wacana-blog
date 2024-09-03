@@ -1,6 +1,6 @@
 <header class="sticky top-0 py-4 bg-white dark:bg-gray-800 w-screen z-10 border-b-2">
     <div class="w-[90%] xl:w-[80%] mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-4 lg:gap-6">
+        <div class="hidden lg:flex items-center gap-4 lg:gap-6">
             <nav id="large-menu" class="hidden md:flex gap-4">
                 <a href="#" class="nav-item active font-semibold text-sm">UI/UX</a>
                 <a href="#" class="nav-item font-semibold text-sm hidden md:block">Flutter</a>
@@ -11,7 +11,7 @@
         </div>
         <x-logo />
         <div class="flex gap-4 items-center">
-            <div class="relative flex h-16 max-w-[300px] flex-1 items-center">
+            <div class="relative hidden lg:flex h-16 max-w-[300px] flex-1 items-center">
                 <form role="search" class="flex-1">
                     <label for="SiteSearch" class="sr-only">Search</label>
                     <input type="text" placeholder="Search..." id="SiteSearch"
@@ -27,7 +27,7 @@
                 </div>
             </div>
             <div id="top-menu" class="flex gap-6">
-                <div class="hidden md:flex">
+                <div class="hidden lg:flex">
                     <label for="darkTheme"
                         class="relative h-8 w-14 cursor-pointer [-webkit-tap-highlight-color:_transparent] dark-mode-toggler">
                         <input type="checkbox" id="darkTheme" name="is_dark"
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div id="mobile-menu-button" class="md:hidden" x-data="{ open: false }">
+        <div id="mobile-menu-button" class="lg:hidden" x-data="{ open: false }">
             <button type="button" @click="open=!open">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                     class="h-6 w-6 text-gray-800 dark:text-white" viewBox="0 0 16 16" x-cloak x-show="!open">
